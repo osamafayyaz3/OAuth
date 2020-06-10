@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #1A1A1D;
+            margin: 50px;
+            
+        }
+        .big{
+            background-color: #4E4E50;
+            padding: 10px
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-evenly;
+       
+            border: 5px solid gray;
+            background-color: azure;
+        }
+        .container {
+            background-color: antiquewhite;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+            
+        }
+
+        .log {
+            width:300px
+            margin: auto;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+          }
+
+          #contact {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+          }
+
+          #contact:hover {
+                opacity: 0.7;      
+          }
+    
+        .osama{
+            margin-top: 10px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="big">
+<div class="card">
+    <img src="<%= user.thumbnail %>" alt="picture" style="width:100%">
+    <h1><%= user.username %></h1>
+    <p class="title">Welcome to your Profile</p>
+    <form action="/logged" method="POST">
+        Name: <input type="text" name="username">
+        <input type="submit"/>
+    </form>
+  </div>
+<div class="osama">
+    
+    <br>
+</div>
+<div class="container">
+<% user.list.forEach(element => { %>
+    <div class="flex-container">
+    <span><%= element.title %></span><form method="POST" action="/logged/<%= element.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    
+<% }) %>
+</div>
+<div class='log'>
+    <a href="/logout"><button>Logout</button></a>
+</div>
+</div>
+</body>
+</html>
